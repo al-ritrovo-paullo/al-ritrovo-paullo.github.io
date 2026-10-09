@@ -1,0 +1,919 @@
+<title>Al Ritrovo Paullo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600..900,100,1;1,9..144,600..900,100,1&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: mobile-first. Hero in una volta ad arco (il forno) con bordo a maiolica,
+   poi indice del menu, fascia aperitivo, ordine, contatti. Barra Ordina/Chiama fissa su mobile. */
+:root {
+  color-scheme: dark;
+  --bg: #0A1226;
+  --surface: #121E38;
+  --ink: #F7EEDB;
+  --muted: #AEB9CE;
+  --blue: #5B93E0;
+  --sun: #F7BE1F;
+  --tomato: #E04A31;
+  --basil: #3E8E4F;
+  --line: #27395D;
+  --band: #123A73;
+  --band-ink: #FFFFFF;
+  --wash: #172647;
+  --ember: #FF8A2A;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --tile: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2056%2056%22%3E%3Cpath%20d=%22M28%204C36%2015%2041%2020%2052%2028%2041%2036%2036%2041%2028%2052%2020%2041%2015%2036%204%2028%2015%2020%2020%2015%2028%204Z%22%20fill=%22none%22%20stroke=%22%234C86D6%22%20stroke-width=%222%22/%3E%3Ccircle%20cx=%2228%22%20cy=%2228%22%20r=%226.5%22%20fill=%22%23F2B705%22/%3E%3Ccircle%20cx=%2228%22%20cy=%2228%22%20r=%222.2%22%20fill=%22%23C93A26%22/%3E%3Cg%20fill=%22%23F2B705%22%3E%3Ccircle%20cx=%220%22%20cy=%220%22%20r=%226%22/%3E%3Ccircle%20cx=%2256%22%20cy=%220%22%20r=%226%22/%3E%3Ccircle%20cx=%220%22%20cy=%2256%22%20r=%226%22/%3E%3Ccircle%20cx=%2256%22%20cy=%2256%22%20r=%226%22/%3E%3C/g%3E%3Cg%20fill=%22%234C86D6%22%3E%3Ccircle%20cx=%220%22%20cy=%220%22%20r=%222%22/%3E%3Ccircle%20cx=%2256%22%20cy=%220%22%20r=%222%22/%3E%3Ccircle%20cx=%220%22%20cy=%2256%22%20r=%222%22/%3E%3Ccircle%20cx=%2256%22%20cy=%2256%22%20r=%222%22/%3E%3C/g%3E%3C/svg%3E");
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.55 var(--font-body); }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { width: min(1120px, 100% - 2rem); margin-inline: auto; }
+.display { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.025em; text-wrap: balance; font-variation-settings: "SOFT" 100, "WONK" 1; }
+.display em, .em { font-style: italic; color: var(--sun); font-weight: 700; }
+
+/* Header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1rem; }
+.brand { display: flex; flex-direction: column; text-decoration: none; line-height: 1; }
+.brand-name { font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1; letter-spacing: -0.02em; font-family: var(--font-display); font-size: 1.75rem; }
+.brand-place { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.06em; margin-top: 0.3rem; }
+.nav { display: none; gap: 1.75rem; align-items: center; }
+.nav a { text-decoration: none; font-weight: 500; }
+.nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 3rem; padding: 0.75rem 1.4rem; border-radius: 999px; font: 600 1rem/1 var(--font-body); text-decoration: none; border: 2px solid transparent; cursor: pointer; }
+.btn-main { background: var(--tomato); color: #fff; }
+.btn-main:hover { filter: brightness(1.08); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); }
+.btn-sun { background: var(--sun); color: #0F2340; }
+.btn-sun:hover { filter: brightness(1.05); }
+
+/* Hero */
+.hero { display: grid; gap: 2rem; align-items: center; padding-block: 1.5rem 3rem; }
+.hero-copy { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.hero h1 { margin: 0; font-size: clamp(2.9rem, 11vw, 5.6rem); line-height: 0.98; }
+.hero-lead { margin: 0; max-width: 34ch; font-size: 1.2rem; color: var(--muted); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+.chips li { padding: 0.35rem 0.8rem; border: 1.5px solid var(--line); border-radius: 999px; font-size: 0.9rem; font-weight: 500; background: var(--surface); }
+
+.arch { padding: 14px; background: var(--surface) var(--tile) 0 0 / 56px 56px; border-radius: 50% 50% 18px 18px / 58% 58% 18px 18px; box-shadow: 0 0 0 2px var(--blue) inset; }
+.arch-in { overflow: hidden; border-radius: 50% 50% 8px 8px / 56% 56% 8px 8px; aspect-ratio: 16 / 11; background: var(--wash); }
+.arch-in img { width: 100%; height: 100%; object-fit: cover; }
+
+.band-tile { height: 18px; background: var(--tile) 0 0 / 56px 56px repeat-x; opacity: 0.9; }
+
+/* Sections */
+.section { padding-block: 4rem; }
+.section-head { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+.section-head h2 { margin: 0; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; }
+.section-head p { margin: 0; color: var(--muted); max-width: 52ch; }
+
+/* Menu */
+.menu-grid { display: grid; gap: 1.75rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr)); }
+.tile { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+.tile-media { aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--wash); display: grid; place-items: center; }
+.tile-media img { width: 100%; height: 100%; object-fit: cover; }
+.tile-media.is-glyph { background: var(--wash) var(--tile) 0 0 / 56px 56px; }
+.tile-media.is-glyph svg { width: 42%; height: auto; filter: drop-shadow(0 6px 0 rgba(15, 35, 64, 0.12)); }
+.tile h3 { margin: 0; font-size: 1.55rem; line-height: 1.1; }
+.tile p { margin: 0; color: var(--muted); max-width: 40ch; }
+.menu-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 2.5rem; }
+.menu-foot p { margin: 0; color: var(--muted); max-width: 46ch; }
+
+/* Aperitivo */
+.banco { display: grid; gap: 2rem; align-items: center; }
+.banco-img { display: block; width: 100%; max-width: 26rem; aspect-ratio: 4/5; object-fit: cover; border-radius: 999px 999px 1.25rem 1.25rem; justify-self: center; }
+.banco-copy { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; min-width: 0; }
+.banco-copy h2 { margin: 0; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.05; }
+.banco-copy p { margin: 0; max-width: 46ch; font-size: 1.1rem; }
+.aperitivo { background: var(--band); color: var(--band-ink); position: relative; overflow: hidden; }
+.aperitivo-photo { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: left center; border-radius: 1rem; margin-bottom: 2rem; }
+.aperitivo-shade { display: none; }
+.aperitivo-grid { position: relative; z-index: 1; }
+.aperitivo-grid { display: grid; gap: 2.5rem; align-items: center; }
+.aperitivo-copy { display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
+.aperitivo h2 { margin: 0; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.05; }
+.aperitivo p { margin: 0; max-width: 46ch; font-size: 1.1rem; }
+.triple { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.1rem; }
+.triple li { font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1; letter-spacing: -0.025em; font-family: var(--font-display); font-size: clamp(2.6rem, 10vw, 4.6rem); line-height: 1; color: var(--sun); }
+.triple li:nth-child(2) { padding-left: 1.2rem; }
+.triple li:nth-child(3) { padding-left: 2.4rem; }
+
+/* Ordina */
+.order { display: grid; gap: 1.5rem; align-items: center; background: var(--surface); border: 2px solid var(--ink); border-radius: 24px; padding: 2rem 1.5rem; }
+.order h2 { margin: 0; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; }
+.order p { margin: 0.5rem 0 0; color: var(--muted); max-width: 44ch; }
+
+/* Info */
+.info-grid { display: grid; gap: 2.5rem; }
+.block { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.block h3 { margin: 0 0 0.25rem; font-size: 1.5rem; line-height: 1.1; }
+.address { font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1; letter-spacing: -0.02em; font-family: var(--font-display); font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.1; margin: 0; }
+.muted { color: var(--muted); margin: 0; }
+.rows { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+.rows li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding-block: 0.8rem; border-bottom: 1px solid var(--line); }
+.rows li:first-child { border-top: 1px solid var(--line); }
+.rows .k { color: var(--muted); font-size: 0.95rem; }
+.rows .v { font-weight: 600; overflow-wrap: anywhere; }
+.copy { font: 600 0.85rem/1 var(--font-body); padding: 0.5rem 0.8rem; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.copy:hover { border-color: var(--ink); }
+.pill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+.pill-list li { padding: 0.4rem 0.85rem; border-radius: 999px; background: var(--wash); font-size: 0.95rem; font-weight: 500; }
+.todo { border: 2px dashed var(--line); border-radius: 14px; padding: 0.9rem 1rem; color: var(--muted); font-size: 0.95rem; }
+
+/* Footer */
+.foot { border-top: 1px solid var(--line); padding-block: 2rem 7rem; color: var(--muted); font-size: 0.92rem; }
+.foot p { margin: 0 0 0.4rem; max-width: 70ch; }
+
+/* Barra mobile */
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; gap: 0.6rem; padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom, 0px)); background: var(--surface); border-top: 1px solid var(--line); }
+.dock .btn { flex: 1; }
+
+@media (min-width: 720px) {
+  .nav { display: flex; }
+  .order { grid-template-columns: 1fr auto; padding: 2.5rem; }
+  .info-grid { grid-template-columns: 1.1fr 1fr; gap: 3.5rem; }
+}
+@media (min-width: 900px) {
+  .hero { grid-template-columns: 1fr 1.15fr; gap: 3rem; padding-block: 2.5rem 4.5rem; }
+  .banco { grid-template-columns: 26rem 1fr; gap: 4rem; }
+  .aperitivo { min-height: 34rem; display: flex; align-items: center; }
+  .aperitivo-photo { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; margin: 0; object-position: 20% center; }
+  .aperitivo-shade { display: block; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 30%, var(--band) 62%); }
+  .aperitivo > .wrap { position: static; width: 100%; }
+  .aperitivo-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem 4rem; }
+  .aperitivo-copy, .triple { grid-column: 2; }
+  .dock { display: none; }
+  .foot { padding-block-end: 2.5rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: filter 0.15s ease, background 0.15s ease, color 0.15s ease; }
+}
+
+/* ===== v2: identita' scura, 3D, animazioni ===== */
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body { overflow-x: clip; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in srgb, var(--bg) 72%, transparent); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.eyebrow { margin: 0; font: 700 0.8rem/1 var(--font-body); letter-spacing: 0.22em; text-transform: uppercase; color: var(--sun); }
+.hero h1 { font-size: clamp(3.2rem, 13vw, 6.8rem); line-height: 0.92; }
+.hero h1 .wm { display: inline-block; overflow: hidden; padding-bottom: 0.12em; margin-bottom: -0.12em; vertical-align: top; }
+.hero h1 .w { display: inline-block; }
+.hero-lead { color: var(--muted); }
+
+.hero-zone { position: relative; overflow: hidden; background:
+  radial-gradient(55% 65% at 78% 42%, rgba(255, 138, 42, 0.30), transparent 70%); }
+.hero-zone > .hero { position: relative; z-index: 1; }
+.embers { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.embers i { position: absolute; bottom: -12px; width: var(--s); height: var(--s); border-radius: 50%; background: radial-gradient(circle, #FFD08A, var(--ember) 55%, transparent 72%); opacity: 0; filter: blur(0.3px); animation: ember var(--t) linear var(--dl) infinite; }
+@keyframes ember { 0% { transform: translate3d(0, 0, 0); opacity: 0; } 10% { opacity: 0.9; } 100% { transform: translate3d(var(--dx), -105vh, 0); opacity: 0; } }
+
+.stage { position: relative; perspective: 1100px; min-width: 0; padding: 1.5rem 1.2rem 2.2rem; }
+.tilt3d { transform-style: preserve-3d; transform: rotateY(calc(var(--mx, 0) * 9deg)) rotateX(calc(var(--my, 0) * -7deg)); will-change: transform; box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.6), 0 0 0 2px var(--blue) inset; }
+.arch { background-color: var(--surface); }
+.arch-in img { transform: scale(1.08) translate3d(calc(var(--mx, 0) * -10px), calc(var(--my, 0) * -8px), 0); }
+.float { position: absolute; width: 5.2rem; height: auto; z-index: 3; pointer-events: none; filter: drop-shadow(0 18px 14px rgba(0, 0, 0, 0.45)); transform: translate3d(calc(var(--mx, 0) * var(--d)), calc(var(--my, 0) * var(--d)), 0); will-change: transform; }
+.float .bob { transform-box: fill-box; transform-origin: center; animation: bob 5s ease-in-out infinite; }
+.fl-basil1 { top: -0.4rem; left: 0; width: 4.6rem; transform: translate3d(calc(var(--mx, 0) * var(--d)), calc(var(--my, 0) * var(--d)), 0) rotate(-24deg); }
+.fl-tomato { bottom: 2rem; left: -0.4rem; width: 5.4rem; }
+.fl-mozz { top: 4.5rem; right: -0.6rem; width: 4.6rem; }
+.fl-basil2 { bottom: 0.4rem; right: 22%; width: 3.2rem; transform: translate3d(calc(var(--mx, 0) * var(--d)), calc(var(--my, 0) * var(--d)), 0) rotate(48deg); }
+.fl-tomato .bob { animation-duration: 6.2s; animation-delay: -1.5s; }
+.fl-mozz .bob { animation-duration: 5.6s; animation-delay: -3s; }
+.fl-basil2 .bob { animation-duration: 4.4s; animation-delay: -2s; }
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(7deg); } }
+
+/* nastro scorrevole */
+.marquee { overflow: hidden; background: var(--tomato); color: #fff; transform: rotate(-1.4deg) scale(1.04); margin-block: 1.2rem; box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.6); }
+.marquee-track { display: flex; align-items: center; gap: 1.6rem; width: max-content; padding-block: 0.9rem; animation: marq 32s linear infinite; }
+.marquee-track span { font: italic 800 clamp(1.5rem, 4vw, 2.4rem)/1 var(--font-display); font-variation-settings: "SOFT" 100, "WONK" 1; white-space: nowrap; letter-spacing: -0.01em; }
+.marquee-track i { font-style: normal; color: var(--sun); font-size: 1.3rem; }
+@keyframes marq { to { transform: translateX(-50%); } }
+.band-tile { opacity: 0.8; }
+
+/* menu: carte con tilt 3D */
+.menu-grid { perspective: 1200px; }
+.tile { transform-style: preserve-3d; }
+.tile-media { position: relative; transform: rotateX(calc(var(--ry, 0) * 1deg)) rotateY(calc(var(--rx, 0) * 1deg)); transition: transform 0.25s ease-out, box-shadow 0.25s ease-out; box-shadow: 0 18px 30px -18px rgba(0, 0, 0, 0.7); will-change: transform; }
+.tile-media::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.28), transparent 55%); opacity: 0; transition: opacity 0.25s; pointer-events: none; }
+.tile:hover .tile-media { box-shadow: 0 34px 44px -18px rgba(0, 0, 0, 0.8); }
+.tile:hover .tile-media::after { opacity: 1; }
+.tile-media img { transition: transform 0.6s ease; }
+.tile:hover .tile-media img { transform: scale(1.07); }
+.tile h3 { font-size: 1.7rem; }
+
+/* sezione 3D */
+.p3 { display: grid; gap: 1.5rem; align-items: center; }
+.p3-copy { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; min-width: 0; }
+.p3-copy h2 { margin: 0; font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1; }
+.p3-copy p { margin: 0; max-width: 40ch; font-size: 1.15rem; color: var(--muted); }
+.p3-copy .eyebrow { color: var(--sun); }
+.p3-stage { position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 34rem; justify-self: center; border-radius: 50%; background: radial-gradient(circle at 50% 55%, rgba(255, 138, 42, 0.32), rgba(255, 138, 42, 0.06) 55%, transparent 70%); }
+.p3-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; }
+.p3-stage canvas:active { cursor: grabbing; }
+.p3-stage img { position: absolute; inset: 8%; width: 84%; height: 84%; object-fit: cover; border-radius: 50%; }
+.hint { white-space: nowrap; position: absolute; left: 50%; bottom: 3%; transform: translateX(-50%); font: 600 0.8rem/1 var(--font-body); letter-spacing: 0.14em; text-transform: uppercase; padding: 0.55rem 0.9rem; border-radius: 999px; background: rgba(10, 18, 38, 0.7); border: 1px solid var(--line); color: var(--muted); pointer-events: none; transition: opacity 0.4s; }
+
+.banco-img { box-shadow: 0 30px 50px -24px rgba(0, 0, 0, 0.8); }
+.aperitivo h2 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+.triple li { text-shadow: 0 6px 24px rgba(0, 0, 0, 0.35); }
+.order { background: linear-gradient(135deg, #E04A31 0%, #A12A17 100%); border: 0; color: #fff; box-shadow: 0 30px 50px -26px rgba(224, 74, 49, 0.7); }
+.order p { color: rgba(255, 255, 255, 0.86); }
+.order .btn-main { background: var(--sun); color: #0F2340; }
+.btn { transition: transform 0.2s ease, filter 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.2s ease; }
+.btn-main { box-shadow: 0 10px 24px -10px rgba(224, 74, 49, 0.8); }
+.btn:hover { transform: translateY(-2px); }
+
+/* entrata allo scroll */
+.js .rv { opacity: 0; transform: translateY(34px); transition: opacity 0.8s cubic-bezier(.2, .7, .2, 1) calc(var(--i, 0) * 90ms), transform 0.8s cubic-bezier(.2, .7, .2, 1) calc(var(--i, 0) * 90ms); }
+.js .rv.in { opacity: 1; transform: none; }
+.js .triple li.rv { transform: translateX(-60px); }
+.js .triple li.rv.in { transform: translateX(0); }
+.js .triple li:nth-child(2).rv.in { transform: translateX(0); }
+.js .hero h1 .w { transform: translateY(110%); transition: transform 0.9s cubic-bezier(.2, .8, .2, 1) calc(var(--i, 0) * 120ms + 150ms); }
+.js .hero h1.in .w { transform: none; }
+.js .hero-copy > *:not(h1) { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease calc(var(--i, 0) * 100ms + 500ms), transform 0.8s ease calc(var(--i, 0) * 100ms + 500ms); }
+.js .hero-copy.in > *:not(h1) { opacity: 1; transform: none; }
+.js .stage { opacity: 0; transform: scale(0.94) translateY(24px); transition: opacity 1s ease 0.3s, transform 1s cubic-bezier(.2, .8, .2, 1) 0.3s; }
+.js .stage.in { opacity: 1; transform: none; }
+
+@media (min-width: 900px) {
+  .p3 { grid-template-columns: 1fr 1.05fr; gap: 3rem; }
+  .stage { padding: 2rem 1.6rem 2.6rem; }
+  .float { width: 6.4rem; }
+  .fl-basil1 { width: 5.4rem; }
+  .fl-tomato { width: 6.6rem; }
+  .fl-mozz { width: 5.4rem; }
+  }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .rv, .js .stage, .js .hero-copy > *, .js .hero h1 .w { opacity: 1 !important; transform: none !important; }
+}
+
+/* ===== menu: linguetta + cassetto ===== */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+button.btn { cursor: pointer; }
+.menu-tab { position: fixed; z-index: 40; right: 0; top: 46%; transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl; display: flex; align-items: center; gap: 0.6rem; padding: 1.1rem 0.7rem; border: 0; border-radius: 0 14px 14px 0; background: var(--sun); color: #0F2340; font: 800 0.95rem/1 var(--font-body); letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; box-shadow: -10px 0 30px -8px rgba(247, 190, 31, 0.55); transition: padding 0.2s ease, box-shadow 0.2s ease; }
+.menu-tab svg { transform: rotate(90deg); }
+.menu-tab:hover { padding-block: 1.4rem; box-shadow: -14px 0 36px -6px rgba(247, 190, 31, 0.8); }
+.menu-tab::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 0 0 0 rgba(247, 190, 31, 0.7); animation: tabping 2.8s ease-out 1.5s infinite; pointer-events: none; }
+@keyframes tabping { 0% { box-shadow: 0 0 0 0 rgba(247, 190, 31, 0.6); } 70%, 100% { box-shadow: 0 0 0 16px rgba(247, 190, 31, 0); } }
+body.menu-open .menu-tab { opacity: 0; pointer-events: none; }
+
+.mdr { position: fixed; inset: 0; z-index: 60; visibility: hidden; transition: visibility 0s linear 0.45s; }
+.mdr.open { visibility: visible; transition-delay: 0s; }
+.mdr-overlay { position: absolute; inset: 0; background: rgba(3, 8, 20, 0.66); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.4s ease; }
+.mdr.open .mdr-overlay { opacity: 1; }
+.mdr-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(620px, 100%); display: flex; flex-direction: column; background: var(--bg); border-left: 1px solid var(--line); box-shadow: -30px 0 80px -20px rgba(0, 0, 0, 0.8); transform: translateX(100%); transition: transform 0.5s cubic-bezier(.2, .8, .2, 1); padding-top: env(safe-area-inset-top, 0px); }
+.mdr.open .mdr-panel { transform: none; }
+.mdr-band { height: 14px; flex: none; background: var(--tile) 0 0 / 56px 56px repeat-x; opacity: 0.85; }
+.mdr-head { flex: none; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.2rem 1.25rem 0.6rem; }
+.mdr-head h2 { margin: 0.4rem 0 0; font-size: clamp(2.2rem, 7vw, 3rem); line-height: 1; }
+.mdr-x { flex: none; width: 2.9rem; height: 2.9rem; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; }
+.mdr-x:hover { background: var(--tomato); transform: rotate(90deg); }
+.mdr-tools { flex: none; display: flex; flex-direction: column; gap: 0.8rem; padding: 0.6rem 1.25rem 0.9rem; border-bottom: 1px solid var(--line); }
+.mdr-search { display: flex; align-items: center; gap: 0.6rem; padding: 0 1rem; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--muted); }
+.mdr-search:focus-within { border-color: var(--sun); color: var(--sun); }
+.mdr-search input { flex: 1; min-width: 0; height: 3rem; border: 0; background: transparent; color: var(--ink); font: 500 1rem var(--font-body); outline: 0; }
+.mdr-search input::placeholder { color: var(--muted); }
+.mdr-chips { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+.mdr-chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; padding: 0.5rem 1rem; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); font: 600 0.9rem/1 var(--font-body); cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.chip:hover { border-color: var(--ink); }
+.chip.on { background: var(--sun); border-color: var(--sun); color: #0F2340; }
+.mdr-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0.4rem 1.25rem 1.5rem; outline: 0; }
+.msec { padding-top: 1.4rem; }
+.msec-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; margin: 0 0 0.4rem; }
+.msec-h h3 { margin: 0; font-size: 1.9rem; line-height: 1.05; color: var(--sun); }
+.msec-h span { color: var(--muted); font-size: 0.95rem; }
+.mi { padding-block: 0.95rem; border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
+.mi-top { display: flex; align-items: baseline; gap: 0.6rem; }
+.mi h4 { margin: 0; font-family: var(--font-display); font-variation-settings: "SOFT" 100, "WONK" 1; font-weight: 700; font-size: 1.28rem; line-height: 1.15; letter-spacing: -0.01em; }
+.mi .lead { flex: 1; min-width: 1rem; border-bottom: 2px dotted var(--line); transform: translateY(-5px); }
+.mi .pr { font: 700 1.1rem/1 var(--font-body); font-variant-numeric: tabular-nums; color: var(--sun); white-space: nowrap; }
+.mi p { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.97rem; line-height: 1.45; max-width: 46ch; }
+.mi.hl { padding-left: 0.9rem; border-left: 3px solid var(--tomato); background: linear-gradient(90deg, rgba(224, 74, 49, 0.14), transparent 70%); }
+.mi.hl h4::after { content: "★"; color: var(--sun); font-size: 0.8em; margin-left: 0.4rem; }
+.madd { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.6rem; margin-top: 0.6rem; }
+.madd div { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; padding: 0.8rem 1rem; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.madd b { font-weight: 600; }
+.madd i { font-style: normal; font-weight: 700; color: var(--sun); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mdr-empty { text-align: center; color: var(--muted); padding: 3rem 1rem; }
+.mdr-foot { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.9rem 1.25rem calc(0.9rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: var(--surface); }
+.mdr-foot p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+body.menu-open { overflow: hidden; }
+.mdr.open .mi, .mdr.open .msec-h, .mdr.open .madd div { animation: mrise 0.6s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--n, 0) * 28ms + 200ms); }
+@keyframes mrise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (max-width: 899px) { .menu-tab { top: 40%; padding: 0.9rem 0.55rem; } }
+/* orari */
+.hours { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+.hours li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); border-radius: 10px; font-variant-numeric: tabular-nums; }
+.hours li:first-child { border-top: 1px solid var(--line); }
+.hours span { color: var(--muted); }
+.hours b { font-weight: 600; }
+.hours b.off { color: var(--muted); font-weight: 500; }
+.hours li.today { background: rgba(247, 190, 31, 0.12); border-color: transparent; box-shadow: inset 3px 0 0 var(--sun); }
+.hours li.today span { color: var(--ink); font-weight: 700; }
+.open-now { display: inline-flex; align-items: center; gap: 0.55rem; margin: 0 0 0.8rem; padding: 0.45rem 0.9rem; border-radius: 999px; font-weight: 600; font-size: 0.95rem; background: var(--surface); border: 1px solid var(--line); }
+.open-now::before { content: ""; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--muted); }
+.open-now.on::before { background: #4CC36B; box-shadow: 0 0 0 4px rgba(76, 195, 107, 0.25); }
+.open-now.off::before { background: var(--tomato); }
+
+.annc { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.2rem 0.8rem; padding: 0.55rem 1rem; background: var(--sun); color: #0F2340; text-decoration: none; font-size: 0.92rem; line-height: 1.25; text-align: center; }
+.annc span { font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.annc:hover span { text-decoration-thickness: 3px; }
+
+/* delivery */
+.dl-banner-s { padding-block: 1rem 0; }
+.dl-banner { display: grid; gap: 0.6rem 1.5rem; align-items: center; padding: 1.6rem 1.5rem; border-radius: 24px; border: 2px solid var(--sun); background: linear-gradient(120deg, rgba(247, 190, 31, 0.16), rgba(247, 190, 31, 0.03)); text-decoration: none; justify-items: start; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.dl-banner:hover { transform: translateY(-3px); box-shadow: 0 24px 40px -22px rgba(247, 190, 31, 0.6); }
+.dl-b-t { font-size: clamp(1.7rem, 5vw, 2.6rem); line-height: 1.05; }
+.dl-b-s { color: var(--muted); }
+.dl-hero { background: radial-gradient(60% 80% at 80% 30%, rgba(255, 138, 42, 0.26), transparent 70%), var(--bg); border-bottom: 1px solid var(--line); }
+.dl-in { display: grid; gap: 2.4rem; padding-block: 3rem 4rem; align-items: center; }
+.dl-copy { display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-start; }
+.dl-copy h1 { margin: 0; font-size: clamp(2.8rem, 10vw, 5.4rem); line-height: 0.98; }
+.dl-lead { margin: 0; font-size: 1.2rem; color: var(--muted); max-width: 32ch; }
+.poster { margin: 0; justify-self: center; width: min(100%, 26rem); border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 40px 70px -24px rgba(0, 0, 0, 0.8), 0 0 0 6px rgba(247, 190, 31, 0.14); transform: rotate(2deg); }
+.poster img { width: 100%; height: auto; }
+.perks { display: grid; gap: 1.6rem; margin: 0; padding: 0; list-style: none; }
+.perks li { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; }
+.perks svg { width: 3.4rem; height: 3.4rem; padding: 0.8rem; color: var(--sun); border: 1.5px solid var(--sun); border-radius: 50%; }
+.perks h3 { margin: 0; font-size: 1.5rem; }
+.perks p { margin: 0.2rem 0 0; color: var(--muted); max-width: 34ch; }
+.steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 1rem; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; padding: 1.1rem 1.2rem; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); font-size: 1.15rem; font-weight: 600; }
+.steps li::before { content: counter(s); width: 2.6rem; height: 2.6rem; display: grid; place-items: center; border-radius: 50%; background: var(--sun); color: #0F2340; font: 800 1.2rem/1 var(--font-display); }
+.dl-note { margin: 1rem 0 0; color: var(--muted); font-size: 0.95rem; max-width: 60ch; }
+@media (min-width: 720px) {
+  .dl-banner { grid-template-columns: 1fr auto; padding: 1.8rem 2.2rem; }
+  .dl-b-t, .dl-b-s { grid-column: 1; }
+  .dl-banner .btn { grid-column: 2; grid-row: 1 / span 2; }
+  .dl-in { grid-template-columns: 1.1fr 0.9fr; gap: 4rem; }
+  .perks { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  .steps li { grid-template-columns: 1fr; justify-items: start; }
+}
+
+.brand-name { font-size: clamp(2.2rem, 7vw, 3.1rem); line-height: 0.95; }
+.brand-place { font-size: 0.95rem; color: var(--ink); opacity: 0.85; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.45rem; }
+/* menu completo in pagina */
+.menu-full { margin-top: clamp(2rem, 5vw, 3.5rem); display: grid; gap: 0 3rem; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .menu-full { grid-template-columns: 1fr 1fr; } .menu-full .msec.wide { grid-column: 1 / -1; } }
+.menu-full .msec { padding-top: 1.2rem; }
+
+.brand { display: grid; grid-template-columns: auto 1fr; column-gap: 0.75rem; align-items: center; }
+.brand-logo { grid-row: 1 / span 2; width: clamp(48px, 11vw, 62px); height: auto; filter: drop-shadow(0 2px 10px rgba(247,190,31,.25)); }
+.brand-name, .brand-place { grid-column: 2; }
+.brand-place { margin-top: 0.35rem; }
+
+/* card numerate 01/02/03 */
+.menu-grid { counter-reset: tile; }
+.tile { counter-increment: tile; }
+.tile h3::before { content: "0" counter(tile) "  —"; display: block; margin-bottom: 0.45rem; font: 700 0.8rem/1 var(--font-body); letter-spacing: 0.2em; color: var(--sun); }
+/* frase di accoglienza */
+.welcome { text-align: center; max-width: 46rem; margin-inline: auto; padding-block: clamp(3rem, 8vw, 6rem); }
+.welcome h2 { margin: 0.9rem 0 1.2rem; font-size: clamp(2.2rem, 7vw, 3.8rem); line-height: 1.02; }
+.welcome h2 em { color: var(--sun); font-style: italic; }
+.welcome p { color: var(--muted); font-size: 1.12rem; line-height: 1.6; margin: 0 auto 0.8rem; max-width: 40rem; }
+.welcome .cta-row { justify-content: center; margin-top: 1.4rem; }
+/* indicazioni */
+.map-link { display: inline-flex; align-items: center; gap: 0.7rem; font-weight: 700; color: var(--ink); }
+.map-link i { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border: 1.5px solid var(--sun); border-radius: 50%; color: var(--sun); font-style: normal; transition: transform .2s, background .2s, color .2s; }
+.map-link:hover i { transform: rotate(45deg); background: var(--sun); color: var(--bg); }
+</style>
+
+<header class="bar"><a class="annc" href="#delivery"><b>Nuovo:</b> consegna a domicilio con Deliveroo<span>Scopri la promo</span></a><div class="wrap top">
+  <a class="brand" href="#top" aria-label="Al Ritrovo, Paullo">
+    <img class="brand-logo" src="img/logo.png" alt="" width="56" height="56">
+    <span class="brand-name">Al Ritrovo</span>
+    <span class="brand-place">Pizzeria a Paullo</span>
+  </a>
+  <nav class="nav" aria-label="Sezioni">
+    <a href="#menu">Specialità</a>
+    <a href="#aperitivo">Aperitivo</a>
+    <a href="#delivery">Delivery</a>
+    <a href="#info">Dove siamo</a>
+    <a class="btn btn-main" href="https://al-ritrovo-paullo.eatbu.com/?lang=it" target="_blank" rel="noopener">Ordina d'asporto</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<div id="view-home">
+  <div class="hero-zone" id="hero-zone"><div class="embers" id="embers" aria-hidden="true"></div>
+  <section class="wrap hero" aria-labelledby="titolo">
+    <div class="hero-copy">
+      <h1 id="titolo" class="display"><span class="wm"><span class="w">Ci si</span></span> <span class="wm"><span class="w em">ritrova</span></span> <span class="wm"><span class="w">qui.</span></span></h1>
+      <p class="hero-lead">Pizza, sfincioni, arancine e cannoli. Specialità siciliane in Via Milano 51, a Paullo.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="https://al-ritrovo-paullo.eatbu.com/?lang=it" target="_blank" rel="noopener">Ordina d'asporto</a>
+        <button type="button" class="btn btn-ghost" data-open-menu>Leggi il menu</button>
+      </div>
+      <ul class="chips" aria-label="Servizi">
+        <li>Asporto</li>
+        <li>Aperitivo</li>
+        <li>Eventi privati</li>
+        <li>Animali ammessi</li>
+      </ul>
+    </div>
+    <div class="stage" id="stage">
+      <div class="arch tilt3d" role="img" aria-label="Pizza margherita davanti al forno acceso, su un tavolo di maiolica blu">
+        <div class="arch-in"><img src="img/hero.jpg" alt="" width="796" height="448"></div>
+      </div>
+      <svg class="float fl-basil1" style="--d:38px" viewBox="0 0 80 100" aria-hidden="true"><defs><linearGradient id="gl1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6BC27A"/><stop offset="1" stop-color="#1F5E32"/></linearGradient></defs><g class="bob"><path d="M40 96C8 70 6 30 40 4c34 26 32 66 0 92Z" fill="url(#gl1)"/><path d="M40 92V12M40 40l-16-12M40 58l-20-14M40 40l16-12M40 58l20-14" stroke="#CFF0C8" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round" fill="none"/></g></svg>
+      <svg class="float fl-tomato" style="--d:26px" viewBox="0 0 100 100" aria-hidden="true"><defs><radialGradient id="gt" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FF8A6B"/><stop offset=".45" stop-color="#E04A31"/><stop offset="1" stop-color="#8E1F12"/></radialGradient></defs><g class="bob"><circle cx="50" cy="56" r="40" fill="url(#gt)"/><path d="M50 22c-4 8-14 10-22 8 8 2 12 8 22 8s14-6 22-8c-8 2-18 0-22-8Z" fill="#2F8A45"/><ellipse cx="36" cy="44" rx="9" ry="5" fill="#fff" fill-opacity=".35" transform="rotate(-30 36 44)"/></g></svg>
+      <svg class="float fl-mozz" style="--d:46px" viewBox="0 0 100 100" aria-hidden="true"><defs><radialGradient id="gm" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#F6EBD0"/><stop offset="1" stop-color="#C9B88F"/></radialGradient></defs><g class="bob"><circle cx="50" cy="52" r="34" fill="url(#gm)"/><ellipse cx="38" cy="38" rx="10" ry="6" fill="#fff" fill-opacity=".7" transform="rotate(-30 38 38)"/></g></svg>
+      <svg class="float fl-basil2" style="--d:20px" viewBox="0 0 80 100" aria-hidden="true"><g class="bob"><path d="M40 96C8 70 6 30 40 4c34 26 32 66 0 92Z" fill="url(#gl1)"/><path d="M40 92V12M40 40l-16-12M40 58l-20-14M40 40l16-12M40 58l20-14" stroke="#CFF0C8" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round" fill="none"/></g></svg>
+    </div>
+  </section></div>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Pizza</span><i>✦</i><span>Sfincioni</span><i>✦</i><span>Arancine</span><i>✦</i><span>Cannoli</span><i>✦</i><span>Aperitivo</span><i>✦</i><span>Asporto</span><i>✦</i><span>Pizza</span><i>✦</i><span>Sfincioni</span><i>✦</i><span>Arancine</span><i>✦</i><span>Cannoli</span><i>✦</i><span>Aperitivo</span><i>✦</i><span>Asporto</span><i>✦</i></div></div>
+
+  <div class="band-tile" aria-hidden="true"></div>
+
+  <section id="menu" class="section wrap" aria-labelledby="menu-t">
+    <div class="section-head">
+      <h2 id="menu-t" class="display">Il nostro menu</h2>
+      <p>Sei cose da provare, e sotto tutto il menu con ingredienti e prezzi.</p>
+    </div>
+    <div class="menu-grid">
+      <article class="tile">
+        <div class="tile-media"><img src="img/hero.jpg" alt="Pizza tradizionale con mozzarella e basilico" loading="lazy"></div>
+        <h3 class="display">Pizza tradizionale</h3>
+        <p>Le pizze di sempre, cotte al momento e tagliate a spicchi.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-media"><img src="img/padellino.jpg" alt="Pizza al padellino tagliata a quadrotti" loading="lazy"></div>
+        <h3 class="display">Pizza al padellino</h3>
+        <p>Alta e morbida dentro, croccante ai bordi. Si mangia a quadrotti.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-media"><img src="img/sfincione.jpg" alt="Sfincione siciliano in teglia" loading="lazy"></div>
+        <h3 class="display">Sfincioni</h3>
+        <p>Il lievitato alto della tradizione siciliana, da portare a casa ancora caldo.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-media"><img src="img/arancine.jpg" alt="Arancine dorate, una aperta con il ripieno" loading="lazy"></div>
+        <h3 class="display">Arancine</h3>
+        <p>Riso fritto e ripieno, croccante fuori e morbido dentro.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-media"><img src="img/cannoli.jpg" alt="Cannoli siciliani con ricotta, pistacchio e arancia candita" loading="lazy"></div>
+        <h3 class="display">Cannoli</h3>
+        <p>Cialda croccante e ricotta, per chiudere in dolcezza.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-media"><img src="img/specialita.jpg" alt="Panelle, crocchè, caponata, focaccia e olive su un piatto di maiolica" loading="lazy"></div>
+        <h3 class="display">Specialità siciliane</h3>
+        <p>Altri piatti dell'isola. Chiedi cosa c'è oggi.</p>
+      </article>
+    </div>
+    <div class="menu-full" id="menu-full" aria-label="Menu completo"></div>
+    <div class="menu-foot">
+      <button type="button" class="btn btn-main" data-open-menu>Cerca nel menu</button>
+      <p>Cerca per ingrediente o filtra per categoria.</p>
+    </div>
+  </section>
+
+  <section class="section wrap banco" aria-labelledby="banco-t">
+    <img class="banco-img" src="img/pizzaiolo.jpg" alt="Il pizzaiolo stende l'impasto sul banco di marmo, davanti al forno acceso" loading="lazy">
+    <div class="banco-copy">
+      <h2 id="banco-t" class="display">Dal banco di Via Milano 51.</h2>
+      <p>Pizze, sfincioni e arancine escono da qui, pronte da mangiare o da portare a casa. Passa a trovarci o ordina dal menu online.</p>
+      <a class="btn btn-main" href="https://al-ritrovo-paullo.eatbu.com/?lang=it" target="_blank" rel="noopener">Ordina d'asporto</a>
+    </div>
+  </section>
+
+  <section id="aperitivo" class="section aperitivo" aria-labelledby="aperitivo-t">
+    <div class="wrap">
+    <img class="aperitivo-photo" src="img/aperitivo.jpg" alt="Due spritz con arancia, tagliere di pizzette, arancini e olive su un tavolo di maiolica" loading="lazy">
+    <div class="aperitivo-shade" aria-hidden="true"></div>
+    <div class="aperitivo-grid">
+      <div class="aperitivo-copy">
+        <h2 id="aperitivo-t" class="display">Un bicchiere mentre aspetti la pizza.</h2>
+        <p>Il nostro aperitivo non è quello classico: ti proponiamo una formula abbondante, economica e soprattutto squisita.</p>
+        <p>Chiedi del giorno al banco o telefona al <strong>02 35950189</strong>.</p>
+      </div>
+      <ul class="triple" aria-label="L'aperitivo in tre parole">
+        <li>Abbondante.</li>
+        <li>Economico.</li>
+        <li>Squisito.</li>
+      </ul>
+    </div>
+    </div>
+  </section>
+
+  <section class="section wrap dl-banner-s" aria-label="Consegna a domicilio">
+    <a class="dl-banner" href="#delivery">
+      <span class="dl-b-t display">Preferisci il divano? <em>Te la portiamo a casa.</em></span>
+      <span class="dl-b-s">Consegna a domicilio con Deliveroo</span>
+      <span class="btn btn-sun">Vedi la promo</span>
+    </a>
+  </section>
+
+  <section class="section wrap" aria-labelledby="ordina-t">
+    <div class="order">
+      <div>
+        <h2 id="ordina-t" class="display">Pizza calda, da portare via.</h2>
+        <p>Scegli dal menu online e passa a ritirare in Via Milano 51, a Paullo.</p>
+      </div>
+      <a class="btn btn-main" href="https://al-ritrovo-paullo.eatbu.com/?lang=it" target="_blank" rel="noopener">Ordina d'asporto</a>
+    </div>
+  </section>
+
+  <section class="welcome wrap" aria-labelledby="welcome-t">
+    <p class="eyebrow">Il piacere di stare a tavola</p>
+    <h2 id="welcome-t" class="display">Qui c’è sempre posto per <em>te.</em></h2>
+    <p>Una cena senza fretta, un aperitivo in compagnia, una festa da ricordare. Un posto semplice e accogliente, dove il gusto è una cosa seria e sentirsi a casa viene naturale.</p>
+    <p>Passa a trovarci, porta chi vuoi, anche il tuo amico a quattro zampe.</p>
+    <div class="cta-row"><a class="btn btn-main" href="https://wa.me/393714292170" target="_blank" rel="noopener">Scrivici su WhatsApp</a></div>
+  </section>
+
+  <section id="info" class="section wrap" aria-labelledby="info-t" style="padding-top: 1rem;">
+    <div class="section-head">
+      <h2 id="info-t" class="display">Dove siamo</h2>
+    </div>
+    <div class="info-grid">
+      <div class="block">
+        <p class="address">Via Milano 51<br>20067 Paullo</p>
+        <p class="muted">Parcheggio non custodito. Aria condizionata. Animali ammessi.</p>
+        <div class="cta-row" style="margin-top: 0.75rem;">
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=45.4159783,9.3999545" target="_blank" rel="noopener"><i aria-hidden="true">↗</i>Apri indicazioni</a>
+        </div>
+        <div style="margin-top: 1.5rem;" class="block">
+          <h3 class="display">Orari</h3>
+          <p class="open-now" id="open-now" hidden></p>
+          <ul class="hours" id="hours">
+            <li data-d="1"><span>Lunedì</span><b class="off">Chiuso</b></li>
+            <li data-d="2"><span>Martedì</span><b class="off">Chiuso</b></li>
+            <li data-d="3"><span>Mercoledì</span><b>19:00 – 21:00</b></li>
+            <li data-d="4"><span>Giovedì</span><b>19:00 – 21:00</b></li>
+            <li data-d="5"><span>Venerdì</span><b>18:30 – 22:00</b></li>
+            <li data-d="6"><span>Sabato</span><b>18:00 – 23:00</b></li>
+            <li data-d="0"><span>Domenica</span><b>18:00 – 22:00</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="block">
+        <h3 class="display">Contatti</h3>
+        <ul class="rows">
+          <li><span class="k">WhatsApp</span><span class="v" id="wa"><a href="https://wa.me/393714292170" target="_blank" rel="noopener">371 429 2170</a></span><button class="copy" type="button" data-copy="3714292170" data-target="wa">Copia</button></li>
+          <li><span class="k">Telefono</span><span class="v" id="tel"><a href="tel:+390235950189">+39 02 35950189</a></span><button class="copy" type="button" data-copy="+39 02 35950189" data-target="tel">Copia</button></li>
+          <li><span class="k">Email</span><span class="v" id="mail">alritrovopaullo@gmail.com</span><button class="copy" type="button" data-copy="alritrovopaullo@gmail.com" data-target="mail">Copia</button></li>
+          <li><span class="k">Instagram</span><a class="v" href="https://www.instagram.com/pizzeria_al_ritrovo_/" target="_blank" rel="noopener">@pizzeria_al_ritrovo_</a></li>
+          <li><span class="k">Facebook</span><span class="v">Pizzeria Al Ritrovo Paullo</span></li>
+        </ul>
+        <div style="margin-top: 1.5rem;" class="block">
+          <h3 class="display">Servizi e pagamenti</h3>
+          <ul class="pill-list">
+            <li>Take away</li><li>Eventi privati</li><li>Aria condizionata</li><li>Parcheggio</li><li>Animali ammessi</li>
+          </ul>
+          <ul class="pill-list" aria-label="Metodi di pagamento" style="margin-top: 0.4rem;">
+            <li>Contanti</li><li>Contactless</li><li>Visa</li><li>Mastercard</li><li>Maestro</li><li>Carta di debito</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="view-delivery" hidden>
+  <section class="dl-hero" aria-labelledby="dl-t">
+    <div class="wrap dl-in">
+      <div class="dl-copy">
+        <p class="eyebrow">Consegna a domicilio</p>
+        <h1 id="dl-t" class="display">La pizza arriva <em>a casa tua.</em></h1>
+        <p class="dl-lead">Con Deliveroo ordini dall'app e la Pizzeria al Ritrovo di Paullo ti porta le sue pizze.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="https://deliveroo.it/it/menu/Milano/paullo-spino-dadda/pizzeria-al-ritrovo-via-milano-51?day=today&amp;geohash=u0ndmj1vzj7w&amp;time=ASAP" target="_blank" rel="noopener">Apri Deliveroo</a>
+          <a class="btn btn-ghost" href="#top" data-home>Torna al sito</a>
+        </div>
+      </div>
+      <figure class="poster"><img src="img/poster.jpg" alt="Locandina: consegna a domicilio con Deliveroo. Scarica l'app e cerca Pizzeria al Ritrovo" width="900" height="1102"></figure>
+    </div>
+  </section>
+  <section class="section wrap" aria-labelledby="perk-t">
+    <div class="section-head"><h2 id="perk-t" class="display">Perché ordinare da casa</h2></div>
+    <ul class="perks">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="17" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 17h6l-3-7h4M5 6h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3 class="display">Veloce</h3><p>Consegna rapida e affidabile.</p></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 8V6M10 6h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><div><h3 class="display">Caldo e fresco</h3><p>I tuoi piatti preferiti, come appena fatti.</p></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7M6 10v10h12V10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3 class="display">Comodo</h3><p>Ordini quando vuoi, dal divano.</p></div></li>
+    </ul>
+  </section>
+  <section class="section wrap" style="padding-top:0" aria-labelledby="step-t">
+    <div class="section-head"><h2 id="step-t" class="display">Come si ordina</h2></div>
+    <ol class="steps">
+      <li>Scarica l'app di Deliveroo.</li>
+      <li>Cerca Pizzeria al Ritrovo.</li>
+      <li>Scegli le pizze e ordina.</li>
+    </ol>
+    <div class="cta-row" style="margin-top:2rem">
+      <a class="btn btn-main" href="https://deliveroo.it/it/menu/Milano/paullo-spino-dadda/pizzeria-al-ritrovo-via-milano-51?day=today&amp;geohash=u0ndmj1vzj7w&amp;time=ASAP" target="_blank" rel="noopener">Apri Deliveroo</a>
+      <button type="button" class="btn btn-ghost" data-open-menu>Leggi il menu</button>
+      <a class="btn btn-ghost" href="https://al-ritrovo-paullo.eatbu.com/?lang=it" target="_blank" rel="noopener">Preferisci ritirare? Ordina d'asporto</a>
+    </div>
+    <p class="dl-note">Zone di consegna, costi e orari del servizio dipendono da Deliveroo e si vedono nell'app, inserendo il tuo indirizzo.</p>
+  </section>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Al Ritrovo di Luca Napolitano</strong>, Via Milano 51, 20067 Paullo.</p>
+    <p>Proposta di nuovo sito per Al Ritrovo. Le immagini sono illustrative e verranno sostituite con le foto vere del locale.</p>
+  </div>
+</footer>
+
+<button type="button" class="menu-tab" id="menu-tab" data-open-menu aria-haspopup="dialog" aria-controls="mdr">
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 3v8M4 3v5a3 3 0 0 0 6 0V3M7 11v10M17 21V3c-2.5 1.5-4 4.5-4 8h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span>Menu</span>
+</button>
+
+<div class="mdr" id="mdr" role="dialog" aria-modal="true" aria-labelledby="mdr-t" aria-hidden="true">
+  <div class="mdr-overlay" data-close-menu></div>
+  <aside class="mdr-panel">
+    <div class="mdr-band" aria-hidden="true"></div>
+    <header class="mdr-head">
+      <div>
+        <p class="eyebrow">Al Ritrovo · Paullo</p>
+        <h2 id="mdr-t" class="display">Il menu</h2>
+      </div>
+      <button type="button" class="mdr-x" id="mdr-x" data-close-menu aria-label="Chiudi il menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    </header>
+    <div class="mdr-tools">
+      <label class="mdr-search"><span class="sr">Cerca nel menu</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" id="mdr-q" placeholder="Cerca una pizza o un ingrediente" autocomplete="off">
+      </label>
+      <div class="mdr-chips" role="group" aria-label="Categorie">
+        <button type="button" class="chip on" data-cat="all">Tutto</button>
+        <button type="button" class="chip" data-cat="pizze">Pizze</button>
+        <button type="button" class="chip" data-cat="calzoni">Calzoni</button>
+        <button type="button" class="chip" data-cat="aggiunte">Aggiunte</button>
+      </div>
+    </div>
+    <div class="mdr-scroll" id="mdr-scroll" tabindex="-1">
+      <div id="mdr-list"></div>
+      <p class="mdr-empty" id="mdr-empty" hidden>Nessun risultato. Prova con un altro ingrediente.</p>
+    </div>
+    <footer class="mdr-foot">
+      <p>Chiedi al banco per eventuali variazioni.</p>
+      <a class="btn btn-main" href="https://al-ritrovo-paullo.eatbu.com/?lang=it" target="_blank" rel="noopener">Ordina d'asporto</a>
+    </footer>
+  </aside>
+</div>
+
+<div class="dock">
+  <a class="btn btn-main" href="https://al-ritrovo-paullo.eatbu.com/?lang=it" target="_blank" rel="noopener">Ordina</a>
+  <a class="btn btn-ghost" href="tel:+390235950189">Chiama</a>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('js');
+
+  /* braci dal forno */
+  var em = document.getElementById('embers');
+  if (em && !reduce) {
+    for (var k = 0; k < 16; k++) {
+      var e = document.createElement('i');
+      e.style.left = (Math.random() * 100) + '%';
+      e.style.setProperty('--s', (3 + Math.random() * 5) + 'px');
+      e.style.setProperty('--t', (7 + Math.random() * 8) + 's');
+      e.style.setProperty('--dl', (-Math.random() * 12) + 's');
+      e.style.setProperty('--dx', ((Math.random() - 0.5) * 140) + 'px');
+      em.appendChild(e);
+    }
+  }
+
+  /* entrate allo scroll */
+  var sel = ['.section-head', '.tile', '.banco-img', '.banco-copy > *', '.aperitivo-copy > *', '.triple li', '.order', '.block', '.menu-foot'];
+  document.querySelectorAll(sel.join(',')).forEach(function (el, n) {
+    el.classList.add('rv');
+    var sib = Array.prototype.indexOf.call(el.parentNode.children, el);
+    el.style.setProperty('--i', Math.min(sib, 6));
+  });
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (es) {
+    es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }) : null;
+  document.querySelectorAll('.rv').forEach(function (el) { io ? io.observe(el) : el.classList.add('in'); });
+  document.querySelectorAll('.hero h1 .w').forEach(function (w, n) { w.style.setProperty('--i', n); });
+  var h1 = document.querySelector('.hero h1'), hc = document.querySelector('.hero-copy'), st = document.getElementById('stage');
+  document.querySelectorAll('.hero-copy > *:not(h1)').forEach(function (el, n) { el.style.setProperty('--i', n); });
+  requestAnimationFrame(function () { requestAnimationFrame(function () {
+    [h1, hc, st].forEach(function (el) { if (el) el.classList.add('in'); });
+  }); });
+
+  /* parallasse 3D dell'arco e degli ingredienti */
+  var tx = 0, ty = 0, cx = 0, cy = 0, pointerSeen = false, heroVisible = true, t0 = performance.now();
+  var zone = document.getElementById('hero-zone');
+  if (zone) {
+    zone.addEventListener('pointermove', function (ev) {
+      if (ev.pointerType === 'touch') return;
+      pointerSeen = true;
+      var r = zone.getBoundingClientRect();
+      tx = ((ev.clientX - r.left) / r.width - 0.5) * 2;
+      ty = ((ev.clientY - r.top) / r.height - 0.5) * 2;
+    });
+    zone.addEventListener('pointerleave', function () { pointerSeen = false; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { heroVisible = es[0].isIntersecting; }).observe(zone);
+  }
+  function tick(now) {
+    if (st && heroVisible && !reduce) {
+      if (!pointerSeen) { var s = (now - t0) / 1000; tx = Math.sin(s * 0.5) * 0.7; ty = Math.cos(s * 0.4) * 0.4; }
+      cx += (tx - cx) * 0.06; cy += (ty - cy) * 0.06;
+      st.style.setProperty('--mx', cx.toFixed(3));
+      st.style.setProperty('--my', cy.toFixed(3));
+    }
+    requestAnimationFrame(tick);
+  }
+  if (st) requestAnimationFrame(tick);
+
+  /* carte menu: tilt col mouse */
+  if (!reduce && window.matchMedia && matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.tile-media').forEach(function (m) {
+      m.addEventListener('pointermove', function (ev) {
+        var r = m.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width, y = (ev.clientY - r.top) / r.height;
+        m.style.setProperty('--rx', ((x - 0.5) * 14).toFixed(2));
+        m.style.setProperty('--ry', ((0.5 - y) * 12).toFixed(2));
+        m.style.setProperty('--gx', (x * 100) + '%'); m.style.setProperty('--gy', (y * 100) + '%');
+      });
+      m.addEventListener('pointerleave', function () { m.style.setProperty('--rx', 0); m.style.setProperty('--ry', 0); });
+    });
+  }
+
+
+  /* ===== menu: dati trascritti dal menu cartaceo ===== */
+  var PIZZE = [
+    ["Bufala", "9,00", "mozzarella di bufala, pomodorini di pachino, basilico e olio evo"],
+    ["Fumé", "8,00", "prosciutto cotto, provola affumicata, basilico e olio evo"],
+    ["Marinara", "7,00", "pomodoro, pomodorino di pachino, aglio, origano, olio, olive, acciughe, basilico e olio evo"],
+    ["Pistacchiosa", "13,00", "mozzarella fior di latte, crema di pistacchio, mortadella, granella di pistacchio, basilico e olio evo"],
+    ["Quattro stagioni", "10,00", "pomodoro, mozzarella fior di latte, prosciutto cotto, funghi, olive, carciofi, basilico e olio evo"],
+    ["Tonno e cipolle", "10,00", "pomodoro, mozzarella fior di latte, tonno, cipolle rosse di Tropea, basilico e olio evo"],
+    ["Al ritrovo", "16,00", "mozzarella di bufala, filetti di tonno rosa, pomodorini di pachino, capperi di Pantelleria, olive, basilico e olio evo", 1],
+    ["La nostra", "9,00", "mozzarella fior di latte, carciofi, prosciutto cotto, basilico e olio evo"],
+    ["San Michele", "13,00", "pomodoro, mozzarella fior di latte, salsiccia al coltello, cipolla rossa di Tropea, peperoni, gorgonzola, basilico e olio evo"],
+    ["Americana", "10,00", "pomodoro, mozzarella fior di latte, würstel, patatine, basilico e olio evo"],
+    ["Santina", "11,00", "pomodoro, mozzarella di bufala, prosciutto crudo, rucola, scaglie di grana, basilico e olio evo"],
+    ["Mandorlata", "9,00", "mozzarella fior di latte, miele, granella di mandorle, scaglie di pecorino, basilico e olio evo"],
+    ["Calabrisella", "9,00", "pomodoro, mozzarella fior di latte, cipolle rosse di Tropea, 'nduja, salame piccante, basilico e olio evo"],
+    ["La limone", "7,00", "mozzarella fior di latte, grana, pepe, succo di limone, basilico e olio evo"],
+    ["Napoli", "8,00", "pomodoro, mozzarella fior di latte, alici, origano, basilico e olio evo"],
+    ["Prosciutto", "8,00", "pomodoro, mozzarella fior di latte, prosciutto cotto, basilico e olio evo"],
+    ["Santuzza", "10,00", "pomodoro, mozzarella fior di latte, salame piccante, porcini, rucola, scaglie di limone, basilico e olio evo"],
+    ["Totò", "8,00", "provola, salsiccia, friarielli, basilico e olio evo"],
+    ["Monte Pellegrino", "15,00", "mozzarella fior di latte, bresaola, funghi porcini, basilico e olio evo"],
+    ["Primavera", "9,00", "mozzarella fior di latte, provola, zucchine, pepe, basilico e olio evo"],
+    ["Marietto", "10,00", "pomodoro, mozzarella fior di latte, gorgonzola, salame piccante, basilico e olio evo"],
+    ["Il focolare", "10,00", "pomodoro al peperoncino, crema di peperoncino, mozzarella fior di latte, pancetta, gorgonzola, basilico e olio evo"],
+    ["La sporca", "7,00", "focaccia sporca di pomodoro, origano, basilico e olio evo"],
+    ["Biancaneve", "6,00", "mozzarella fior di latte, basilico e olio evo"],
+    ["Diavola", "8,00", "pomodoro, mozzarella fior di latte, salame piccante, basilico e olio evo"],
+    ["Margherita", "8,00", "pomodoro, mozzarella fior di latte, basilico e olio evo"],
+    ["Norma", "9,00", "pomodoro, mozzarella fior di latte, melanzane fritte, basilico, scaglie di ricotta salata, basilico e olio evo"],
+    ["Quattro formaggi", "8,00", "mozzarella fior di latte, gorgonzola, provola affumicata, fontina, basilico e olio evo"],
+    ["Sfincione", "11,00", "tipica pizza siciliana: cipolle, alici, pecorino, pangrattato, pomodoro"],
+    ["Vegetariana", "8,00", "pomodoro, mozzarella fior di latte, melanzane, zucchine, peperoni grigliati, basilico e olio evo"],
+    ["Provoletta", "8,00", "pomodoro, provola, pepe, basilico e olio evo"],
+    ["Cacio e pepe", "8,00", "mozzarella fior di latte, cacio, pepe, basilico e olio evo"],
+    ["Anto", "12,00", "pomodoro, mozzarella fior di latte, funghi porcini, speck, basilico e olio evo"],
+    ["Mazara del Vallo", "18,00", "base focaccia, rucoletta, mozzarella di bufala, pomodorini gialli e rossi, gambero rosso, basilico e olio evo"],
+    ["Nocciolata", "8,00", "crema al cioccolato, granella di nocciole, basilico e olio evo"]
+  ];
+  var CALZONI = [
+    ["Farcito", "9,00", "pomodoro, mozzarella fior di latte, prosciutto cotto, funghi, carciofi, olio evo, basilico"],
+    ["Il diavolo e l'acqua santa", "8,00", "mozzarella fior di latte, salame piccante, crema di ricotta, olio evo, basilico"],
+    ["Il meridione", "8,00", "provola affumicata, alici, scarola, olive, olio evo, basilico"],
+    ["Normale", "8,00", "pomodoro, mozzarella fior di latte, prosciutto cotto, olio evo, basilico"]
+  ];
+  var AGGIUNTE = [["Mozzarella fior di latte", "1,00"], ["Mozzarella di bufala", "2,00"], ["Prosciutto crudo", "2,00"], ["Tonno", "2,00"], ["Tutte le altre aggiunte", "1,00"]];
+
+  /* ===== orari: evidenzia oggi e dice se e' aperto (ora italiana) ===== */
+  (function () {
+    var H = { 0: [18 * 60, 22 * 60], 1: null, 2: null, 3: [19 * 60, 21 * 60], 4: [19 * 60, 21 * 60], 5: [18 * 60 + 30, 22 * 60], 6: [18 * 60, 23 * 60] };
+    var NAMES = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
+    function fmt(m) { var h = Math.floor(m / 60), mm = m % 60; return h + (mm ? ':' + (mm < 10 ? '0' : '') + mm : ''); }
+    var el = document.getElementById('open-now'); if (!el) return;
+    try {
+      var p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Rome', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date()), o = {};
+      p.forEach(function (x) { o[x.type] = x.value; });
+      var d = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[o.weekday], now = (parseInt(o.hour, 10) % 24) * 60 + parseInt(o.minute, 10);
+      var today = document.querySelector('.hours li[data-d="' + d + '"]'); if (today) today.classList.add('today');
+      var h = H[d], msg, on = false;
+      if (h && now >= h[0] && now < h[1]) { on = true; msg = 'Aperto ora · fino alle ' + fmt(h[1]); }
+      else if (h && now < h[0]) { msg = 'Chiuso ora · apre oggi alle ' + fmt(h[0]); }
+      else {
+        for (var i = 1; i <= 7; i++) { var nd = (d + i) % 7; if (H[nd]) { msg = 'Chiuso ora · riapre ' + (i === 1 ? 'domani' : NAMES[nd]) + ' alle ' + fmt(H[nd][0]); break; } }
+      }
+      el.textContent = msg; el.className = 'open-now ' + (on ? 'on' : 'off'); el.hidden = false;
+    } catch (e) {}
+  })();
+
+  var mdr = document.getElementById('mdr'), list = document.getElementById('mdr-list'), q = document.getElementById('mdr-q'),
+      empty = document.getElementById('mdr-empty'), scroller = document.getElementById('mdr-scroll'), lastOpener = null, cat = 'all';
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function item(r) { return '<div class="mi' + (r[3] ? ' hl' : '') + '" data-s="' + esc(norm(r[0] + ' ' + r[2])) + '"><div class="mi-top"><h4>' + esc(r[0]) + '</h4><span class="lead"></span><span class="pr">€' + r[1] + '</span></div><p>' + esc(r[2]) + '</p></div>'; }
+  if (list) {
+    list.innerHTML =
+      '<section class="msec" data-sec="pizze"><div class="msec-h"><h3 class="display">Pizze</h3><span>tradizionali e al tegamino (padellino)</span></div>' + PIZZE.map(item).join('') + '</section>' +
+      '<section class="msec" data-sec="aggiunte"><div class="msec-h"><h3 class="display">Aggiunte</h3></div><div class="madd">' + AGGIUNTE.map(function (a) { return '<div data-s="' + esc(norm(a[0])) + '"><b>' + esc(a[0]) + '</b><i>€' + a[1] + '</i></div>'; }).join('') + '</div></section>' +
+      '<section class="msec" data-sec="calzoni"><div class="msec-h"><h3 class="display">I nostri calzoni</h3></div>' + CALZONI.map(item).join('') + '</section>';
+    var k = 0; list.querySelectorAll('.mi, .msec-h, .madd div').forEach(function (el) { el.style.setProperty('--n', Math.min(k++, 14)); });
+  }
+  function applyFilter() {
+    var term = norm((q.value || '').trim()), shown = 0;
+    list.querySelectorAll('.msec').forEach(function (sec) {
+      var inCat = cat === 'all' || sec.getAttribute('data-sec') === cat, any = 0;
+      sec.querySelectorAll('[data-s]').forEach(function (el) {
+        var ok = inCat && (!term || el.getAttribute('data-s').indexOf(term) !== -1);
+        el.hidden = !ok; if (ok) any++;
+      });
+      sec.hidden = !any; shown += any;
+    });
+    empty.hidden = shown > 0;
+  }
+
+  var full = document.getElementById('menu-full');
+  if (full) {
+    var half = Math.ceil(PIZZE.length / 2);
+    full.innerHTML =
+      '<section class="msec"><div class="msec-h"><h3 class="display">Pizze</h3><span>tradizionali e al tegamino</span></div>' + PIZZE.slice(0, half).map(item).join('') + '</section>' +
+      '<section class="msec"><div class="msec-h"><h3 class="display" aria-hidden="true">&nbsp;</h3></div>' + PIZZE.slice(half).map(item).join('') + '</section>' +
+      '<section class="msec"><div class="msec-h"><h3 class="display">I nostri calzoni</h3></div>' + CALZONI.map(item).join('') + '</section>' +
+      '<section class="msec"><div class="msec-h"><h3 class="display">Aggiunte</h3></div><div class="madd">' + AGGIUNTE.map(function (a) { return '<div><b>' + esc(a[0]) + '</b><i>\u20ac' + a[1] + '</i></div>'; }).join('') + '</div></section>';
+  }
+  if (q) q.addEventListener('input', applyFilter);
+  document.querySelectorAll('.chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      cat = c.getAttribute('data-cat');
+      document.querySelectorAll('.chip').forEach(function (x) { x.classList.toggle('on', x === c); });
+      applyFilter(); scroller.scrollTop = 0;
+    });
+  });
+  function openMenu(opener) {
+    lastOpener = opener || null;
+    mdr.classList.add('open'); mdr.setAttribute('aria-hidden', 'false'); document.body.classList.add('menu-open');
+    setTimeout(function () { var x = document.getElementById('mdr-x'); if (x) x.focus(); }, 60);
+  }
+  function closeMenu() {
+    mdr.classList.remove('open'); mdr.setAttribute('aria-hidden', 'true'); document.body.classList.remove('menu-open');
+    if (lastOpener && lastOpener.focus) lastOpener.focus();
+  }
+  document.querySelectorAll('[data-open-menu]').forEach(function (b) { b.addEventListener('click', function () { openMenu(b); }); });
+  document.querySelectorAll('[data-close-menu]').forEach(function (b) { b.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (ev) {
+    if (!mdr || !mdr.classList.contains('open')) return;
+    if (ev.key === 'Escape') { closeMenu(); return; }
+    if (ev.key === 'Tab') {
+      var f = Array.prototype.filter.call(mdr.querySelectorAll('button, a[href], input'), function (el) { return el.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+      else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* ===== due pagine: sito e delivery ===== */
+  (function () {
+    var home = document.getElementById('view-home'), dl = document.getElementById('view-delivery');
+    function route(first) {
+      var h = location.hash, isDl = h === '#delivery';
+      home.hidden = isDl; dl.hidden = !isDl;
+      document.title = isDl ? 'Delivery · Al Ritrovo Paullo' : 'Al Ritrovo Paullo';
+      var target = (!isDl && h.length > 1) ? document.getElementById(h.slice(1)) : null;
+      if (target) target.scrollIntoView();
+      else if (!first || isDl) window.scrollTo(0, 0);
+    }
+    window.addEventListener('hashchange', function () { route(false); });
+    route(true);
+  })();
+})();
+</script>
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = btn.getAttribute('data-copy');
+    var target = document.getElementById(btn.getAttribute('data-target'));
+    function done() { btn.textContent = 'Copiato'; setTimeout(function () { btn.textContent = 'Copia'; }, 1600); }
+    function select() {
+      if (!target) return;
+      var r = document.createRange(); r.selectNodeContents(target);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selezionato'; setTimeout(function () { btn.textContent = 'Copia'; }, 1600);
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, select);
+    } catch (e) { select(); }
+  });
+});
+</script>
